@@ -1,0 +1,9 @@
+/.nyc_output/
+/build/
+/dist/
+/node_modules/
+/src/**/*.js.gz
+/src/test/**/*.xxxx.js
+/src/test/**/*.----.js
+/src/test/tmp/
+/package-lock.json
