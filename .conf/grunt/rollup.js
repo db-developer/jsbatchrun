@@ -12,6 +12,8 @@ module.exports  = function ( grunt, options ) {
       external:   [
                     "fs", "path", // node packages
                     "grunt",
+                    "jsbatch-lang", "jsbatch-strings",
+                    "jsbatchrun-fs", "jsbatchrun-git", "jsbatchrun-npm",
                     "minimist",
                     "resolve"
                   ],
@@ -22,18 +24,6 @@ module.exports  = function ( grunt, options ) {
     index:  {
       src:        path.join( options.LIBDIR, "index.js" ),
       dest:       path.join( options.BUILDDIR, options.STRINGS.LIB, "index.js" )
-    },
-    fs:  {
-      src:        path.join( options.LIBDIR, "fs", "index.js" ),
-      dest:       path.join( options.BUILDDIR, options.STRINGS.LIB, "fs", "index.js" )
-    },
-    git:  {
-      src:        path.join( options.LIBDIR, "git", "index.js" ),
-      dest:       path.join( options.BUILDDIR, options.STRINGS.LIB, "git", "index.js" )
-    },
-    npm:  {
-      src:        path.join( options.LIBDIR, "npm", "index.js" ),
-      dest:       path.join( options.BUILDDIR, options.STRINGS.LIB, "npm", "index.js" )
     }
-  }
+  };
 };

@@ -17,11 +17,11 @@
  *  @ignore
  */
 const _m = {
-  lang:             require( "jsbatch-lang" ),
+  lang:             require( "jsbatch-lang"    ),
+  strings:          require( "jsbatch-strings" ),
   minimist:         require( "minimist"     ),
   path:             require( "path"         ),
-  env:              require( "./env"        ),
-  strings:          require( "./strings"    )
+  env:              require( "./env"        )
 };
 
 /**
@@ -67,7 +67,7 @@ function _init_STRINGS() {
     TYPE_OBJECT:                      "object",
     TYPE_STRING:                      "string",
   };
-  return Object.assign( strings, _m.strings.STRINGS );
+  return Object.assign( strings, _m.strings );
 }
 
 /**

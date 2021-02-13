@@ -1,6 +1,6 @@
 {
   "name": "jsbatchrun",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "batchbuild javascript projects",
   "author": "Dirk Brenckmann <db.developer@gmx.de>",
   "license": "MIT",
@@ -60,6 +60,10 @@
     "grunt-jsonfile": "^0.2.6",
     "grunt-npm-command": "^0.1.2",
     "jsbatch-lang": "^0.0.2",
+    "jsbatch-strings": "^0.0.2",
+    "jsbatchrun-fs": "^0.0.1",
+    "jsbatchrun-git": "^0.0.1",
+    "jsbatchrun-npm": "^0.0.1",
     "minimist": "^1.2.5",
     "resolve": "^1.20.0"
   }

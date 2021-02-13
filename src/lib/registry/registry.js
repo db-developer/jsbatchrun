@@ -17,13 +17,13 @@
  *  @ignore
  */
 const _m = {
-  lang:                 require( "jsbatch-lang" ),
+  lang:                 require( "jsbatch-lang"       ),
+  strings:              require( "jsbatch-strings"    ),
+  fs:                   require( "jsbatchrun-fs"      ),
+  git:                  require( "jsbatchrun-git"     ),
+  npm:                  require( "jsbatchrun-npm"     ),
   dynamic:              require( "../dynamic.require" ),
-  fs:                   require( "../fs"      ),
-  git:                  require( "../git"     ),
-  npm:                  require( "../npm"     ),
-  strings:              require( "../strings" ),
-  util:                 require( "../util"    )
+  util:                 require( "../util"            )
 };
 
 /**
@@ -46,7 +46,7 @@ function _init_STRINGS() {
     REGISTRY_KEY_HELP:      `${ help }`,
     REGISTRY_KEY_NPM:       "npm"
   };
-  return Object.assign( strings, _m.strings.STRINGS );
+  return Object.assign( strings, _m.strings );
 }
 /**
  *  Stringtable
