@@ -97,7 +97,7 @@ Configuration files provide a way to
 path may be an absolute path to a configuration file or it must be relative to
 the current working directory (cwd) or (cwd)/.conf/jsbatchrun/
 
-[Read more on configuration files (Follow the link)](docs/enf/env.md)
+[Read more on configuration files (Follow the link)](docs/env/env.md)
 
 ### options and flags ###
 

@@ -1,6 +1,6 @@
 {
   "name": "jsbatchrun",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "batchbuild javascript projects",
   "author": "Dirk Brenckmann <db.developer@gmx.de>",
   "license": "MIT",
