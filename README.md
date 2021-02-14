@@ -36,6 +36,8 @@ Currently all jsbatchrun plugins utilize [grunt.js](https://gruntjs.com/) to be 
   * [Frameworks used for testing, building, etc.](docs/frameworks.md)
   * [API of package jsbatchrun](docs/api.index.md) (self generated with jsbatchrun)
 
+* [Changelog](docs/changelog.md)
+
 ## getting started ##
 
 ### install ###
