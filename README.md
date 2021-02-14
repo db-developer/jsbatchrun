@@ -17,7 +17,7 @@ a number of projects (directories with a package.json file).
 All of jsbatchruns predefined tasks are packaged into 'plugins' which are simply called with options
 and arguments, that can be passed in to jsbatchrun manually or they can be read from a configuration
 file or 'generated' on the fly.  
-Currently all jsbatchrun plugins utilize [grunt.js](https://gruntjs.com/) stay platform independent.  
+Currently all jsbatchrun plugins utilize [grunt.js](https://gruntjs.com/) to be platform independent.  
 
 ## content ##
 
