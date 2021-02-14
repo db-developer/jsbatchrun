@@ -46,6 +46,11 @@ module.exports = function( grunt ) {
 
   grunt.registerTask( strings.BUILDRO, [ strings.ROLLUP,      "shell:npm_pack" ]);
 
+  // run coverage (required by travis)
+  grunt.registerTask( strings.COVERAGE, [ strings.ESLINT,     strings.CLEAN,
+                                          strings.MKDIR,      `${ strings.COPY  }:test`,
+                                          strings.NYCMOCHA ]);
+
   // run default
   grunt.registerTask( strings.DEFAULT, [ strings.ALL ]);
 
