@@ -117,7 +117,7 @@ beginning of arguments to 'minimist'
 ```
 ### injecting options ###
 
-[You might want to look at the list of special options](env/commandline.md)  
+[You might want to look at the list of special options](docs/env/commandline.md)  
 
 jsbatchrun aims to reduce manual work with monkeyjobs. Therefor it provides a way
 to inject options (create them on the fly) with predefined values:  
@@ -145,7 +145,7 @@ to 'narrow down' or 'widen' the list of arguments.
 
 ### injecting arguments ###
 
-[You might want to look at the list of special options](env/commandline.md)  
+[You might want to look at the list of special options](docs/env/commandline.md)  
 jsbatchrun provides three ways of injecting values as arguments.
 
 1. inject arguments if no arguments are provided via the commandline:  
@@ -199,7 +199,7 @@ n arguments?
 To avoid that, arguments can be narrowed, no matter how many arguments have been
 prepended to, used by or appended to your list of arguments.
 
-[You might want to look at the list of special options](env/commandline.md)
+[You might want to look at the list of special options](docs/env/commandline.md)
 
 1. Start argument processing at a given position:
 
