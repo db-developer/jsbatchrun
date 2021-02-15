@@ -5,7 +5,10 @@
 3. cd into the directory
 4. call 'npm init'  
    it's not important how you name the project. simply create it.
-5. call 'npm install jsbatchrun --save'
+5. call <code>npm install jsbatchrun --save</code>
+6. call <code>npm install jsbatchrun-fs --save</code>
+7. call <code>npm install jsbatchrun-git --save</code>
+8. call <code>npm install jsbatchrun-npm --save</code>
 
 ### setting up a configuration file ###
 
@@ -14,7 +17,14 @@ by default, jsbatchrun tries to locate its configuration file in the directory w
 so simply create a (hidden) file named '.jsbatchrun.js' and copy the following content:
 
 ```javascript
-module.exports = function( args ) {
+// load plugins (commands)
+const fs  = require( "jsbatchrun-fs"  );
+const git = require( "jsbatchrun-git" );
+const npm = require( "jsbatchrun-npm" );
+
+module.exports = function( register ) {
+  register( fs, git, npm );
+
   return {
     foo:          "bar",
     other:        [ "values" ],
@@ -24,8 +34,6 @@ module.exports = function( args ) {
                   ]
   };
 }
-// this will provide the environment properties 'foo', 'other' and 'projectdirs' to all of your jobs.
-// feel free to extend and adjust them to your needs...
 ```
 in case you intend to use different configuration files for your jobs, you can use the
 <code>--config configfilename.js</code> option
