@@ -1,4 +1,17 @@
-TODO: write about plugins...
+## v 0.0.4 - 15.02.2021 ##
+  - docs update
+    - [plugins](plugins.md)
+  - fixed help
+    ```bash
+    # list commands (aka plugins)
+    > jsbr help
+
+    # show help for plugin 'fs' (will do a listing of 'fs' subcommands)
+    > jsbr help fs
+
+    # show help for plugin 'fs' and subcommand 'clean'
+    > jsbr fs help clean
+    ```
 
 ## v 0.0.3 - 14.02.2021 ##
   - docs update

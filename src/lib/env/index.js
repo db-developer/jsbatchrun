@@ -53,15 +53,26 @@ const _STRINGS =  {
 let _ENVIRONMENT = undefined;
 
 /**
- *
+ *  Register command plugins.
+ */
+function register( registry, nodes ) {
+  if ( Array.isArray( nodes )) {
+       nodes.forEach(( node ) => {
+         register( registry, node );
+       })
+  }
+  else registry.register( nodes );
+}
+
+/**
+ *  Returns an environment.
  */
 function get( registry, args, log ) {
   if ( ! _ENVIRONMENT ) {
-       // disable direct access to registry by indirection
-       const register = ( commandname, module ) => {
-         registry.register( commandname, module );
+       const wrapped = ( ...nodes ) => {
+         register( registry, nodes )
        }
-       _ENVIRONMENT = new Environment( _m.env( register, args, log ));
+       _ENVIRONMENT = new Environment( _m.env( wrapped, args, log ));
   }
   return _ENVIRONMENT;
 }

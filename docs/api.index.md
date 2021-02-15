@@ -11,6 +11,7 @@
     * _static_
         * [._(args, log)](api.md/env/index.md#module_jsbatchrun/env._)
     * _inner_
+        * [~register()](api.md/env/index.md#module_jsbatchrun/env..register)
         * [~get()](api.md/env/index.md#module_jsbatchrun/env..get)
 * [jsbatchrun/env/env](api.md/env/env.md#module_jsbatchrun/env/env)
     * _static_
@@ -26,11 +27,11 @@
     * [~exitprocess(value)](api.md/jsbatchrun.md#module_jsbatchrun/jsbatchrun..exitprocess)
 * [jsbatchrun/registry](api.md/registry/index.md#module_jsbatchrun/registry)
     * [.invoke(args)](api.md/registry/index.md#module_jsbatchrun/registry.invoke)
+    * [.register()](api.md/registry/index.md#module_jsbatchrun/registry.register)
 * [jsbatchrun/registry/registry](api.md/registry/registry.md#module_jsbatchrun/registry/registry)
-    * [~register(mod)](api.md/registry/registry.md#module_jsbatchrun/registry/registry..register)
+    * [~register(exports)](api.md/registry/registry.md#module_jsbatchrun/registry/registry..register)
     * [~help()](api.md/registry/registry.md#module_jsbatchrun/registry/registry..help)
     * [~invoke(args, [log])](api.md/registry/registry.md#module_jsbatchrun/registry/registry..invoke)
-    * [~invokeHelp(args, log)](api.md/registry/registry.md#module_jsbatchrun/registry/registry..invokeHelp)
 * [jsbatchrun/util](api.md/util.md#module_jsbatchrun/util)
     * [~split(args)](api.md/util.md#module_jsbatchrun/util..split) ⇒ <code>object</code>
     * [~help(registry, args, [log])](api.md/util.md#module_jsbatchrun/util..help)

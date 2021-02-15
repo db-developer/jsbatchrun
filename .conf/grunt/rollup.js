@@ -13,7 +13,6 @@ module.exports  = function ( grunt, options ) {
                     "fs", "path", // node packages
                     "grunt",
                     "jsbatch-lang", "jsbatch-strings",
-                    "jsbatchrun-fs", "jsbatchrun-git", "jsbatchrun-npm",
                     "minimist",
                     "resolve"
                   ],

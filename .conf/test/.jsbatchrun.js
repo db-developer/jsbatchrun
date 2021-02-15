@@ -2,10 +2,13 @@
  *  © 2021, db-developer.
  *  Licensed under the MIT license.
  */
-const path = require( "path" );
+const path  = require( "path" );
+const fs    = require( "jsbatchrun-fs"  );
+const git   = require( "jsbatchrun-git" );
+const npm   = require( "jsbatchrun-npm" );
 
 module.exports = function( register, args, log ) {
-  try{ register(); } catch( error ) { log( error ); }
+  try{ register( fs, git, npm ); } catch( error ) { log( error ); }
   const projectdirs = [
     path.join( process.cwd(), "src", "test", "template", "project-00" ),
     path.join( process.cwd(), "src", "test", "template", "project-01" ),

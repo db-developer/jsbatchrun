@@ -26,7 +26,7 @@ Currently all jsbatchrun plugins utilize [grunt.js](https://gruntjs.com/) to be 
   * [Usage and examples](#usage)
   * [Using confguration files](docs/env/env.md)
   * [Commandline options and arguments](docs/env/commandline.md)
-  * [Plugins (TODO)]()
+  * [Plugins](docs/plugins.md)
 
 * Developers
   * [Testing jsbatchrun](docs/grunt.md#testing)
@@ -89,7 +89,7 @@ on a plugin (which must be named next in the list of <code>process.argv</code>).
 ### using configuration files ###
 
 Configuration files provide a way to
-* load plugins (more commands)
+* [load plugins (more commands)](docs/plugins.md#loading_plugins)
 * provide properties that can be used with options or arguments
 
 <code>--config path</code>

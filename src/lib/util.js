@@ -54,10 +54,11 @@ function _init_STRINGS() {
     MSG_LIST_OF_CMD:                  "List of available subcommands for",
     MSG_NO_CMD_REGISTERED:            "No commands registered for",
     NO_CMD_TO_LIST_SUBCMD:            "No command available to list subcommands.",
-    MSG_NO_HELP_REGISTERED:           "No help registered",
-    MSG_NO_HELP_CALLBACK_REGISTERED:  "No help callback registered for",
     MSG_MISSING_SUBCOMMAND:           "Missing subcommand for",
+    MSG_NO_HELP_FOR:                  "No help for ",
+    MSG_NO_HELP_CALLBACK:             "No help callback ",
     MSG_NO_SUCH_CMD:                  "No such command",
+    MSG_REGISTERED_WITH:               " registered with ",
     OPTION_PREFIX:                    "-",
     PROJECTDIRS:                      "projectdirs",
     PUSH:                             "push",
@@ -112,15 +113,21 @@ function help( registry, args, log ) {
   const funct = registry.help[ obj.cmd ];
   if (( funct === null ) || ( funct === undefined )) {
         let errmsg = undefined;
-        if (( obj.cmd !== null ) && ( obj.cmd !== undefined )) {
-              errmsg = `${ _STRINGS.MSG_NO_HELP_CALLBACK_REGISTERED } '${ cmd }' '${ obj.cmd }'`;
+        if ( _m.lang.exists( obj.cmd )) {
+             if ( obj.cmd !== _STRINGS.HELP ) {
+                  errmsg  = `${ _STRINGS.MSG_NO_HELP_FOR }'${ obj.cmd }'`;
+                  errmsg += `${ _STRINGS.MSG_REGISTERED_WITH }'${ cmd }'`;
+             }
         }
         else  errmsg = `${ _STRINGS.MSG_MISSING_SUBCOMMAND }: ${ cmd }`;
-        log( errmsg );
+        if ( _m.lang.isNotEmpty( errmsg )) { log( errmsg ); }
         list( registry, log );
-        return Promise.reject( new Error( errmsg ));
+        if ( _m.lang.isNotEmpty( errmsg )) {
+             return Promise.reject( new Error( errmsg ));
+        }
+        else return Promise.resolve();
   }
-  else return Promise.resolve( log( funct( `${ cmd } ${ obj.cmd }`, obj.args )));
+  else  return Promise.resolve( log( funct( `${ cmd } ${ obj.cmd }`, obj.args )));
 }
 
 /**

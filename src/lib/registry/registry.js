@@ -19,9 +19,6 @@
 const _m = {
   lang:                 require( "jsbatch-lang"       ),
   strings:              require( "jsbatch-strings"    ),
-  fs:                   require( "jsbatchrun-fs"      ),
-  git:                  require( "jsbatchrun-git"     ),
-  npm:                  require( "jsbatchrun-npm"     ),
   dynamic:              require( "../dynamic.require" ),
   util:                 require( "../util"            )
 };
@@ -63,16 +60,17 @@ const _REGISTRY = { }
 /**
  *  Register a command with a module for executing the command.
  *
- *  @param  {module}  mod - The module (exports) to call for
- *                          executing a command.
+ *  @param  {object}  exports - A modules exports, which must provide all
+ *                              properties to make up a registry.
+ *                              See: <code>'jsbatch-lang'.isRegistry</code>
  */
-function register( mod ) {
-  if ( ! _m.lang.isRegistry( mod )) {
+function register( exports ) {
+  if ( ! _m.lang.isRegistry( exports )) {
        const msg = `${ _STRINGS.CLASS_MEMBER_REGISTER }${ _STRINGS.ERR_MSG_EXP_WRONG_TYPE }`;
        throw new TypeError( msg );
   }
-  else Object.defineProperty( _REGISTRY, mod.id, { value: mod, writable: false, enumerable: true,
-                                                   configurable: false });
+  else Object.defineProperty( _REGISTRY, exports.id, { value: exports, writable:
+                              false, enumerable: true, configurable: false });
 }
 
 /**
@@ -92,48 +90,32 @@ ${ _STRINGS.MSG_LIST_OF_CMD }:
  *  @param  {function}  [log] - A logging function (for testing purposes)
  */
 function invoke( args, log ) {
-        args   = _m.lang.exists( args ) ? args : [ ];
-        log    = _m.lang.exists( log  ) ? log  : console.log;
-  const obj    = _m.util.split( args );
-  let   module = _REGISTRY[ obj.cmd ];
-  if ( ! _m.lang.exists( module )) {
-       if ( _m.lang.isNotEmpty( obj.cmd )) {
-            const message = `${ _STRINGS.MSG_UNKNOWN_CMD }: ${ obj.cmd }`;
-            return Promise.resolve( log( help( `${ message }\r\n\r\n` )));
+        args      = _m.lang.exists( args ) ? args : [ ];
+        log       = _m.lang.exists( log  ) ? log  : console.log;
+  const obj       = _m.util.split( args );
+  let   registry  = _REGISTRY[ obj.cmd ];
+  /* istanbul ignore else: tested by '00.10.uti.spec.js' */
+  if ( ! _m.lang.exists( registry )) {
+       if (( _m.lang.isNotEmpty( obj.cmd )) && ( obj.cmd !== _STRINGS.HELP )) {
+             const message = `${ _STRINGS.MSG_UNKNOWN_CMD }: '${ obj.cmd }'`;
+             return Promise.resolve( log( help( `${ message }\n\r\n\r` )));
        }
-       else return Promise.resolve( log( help( _STRINGS.EMPTY )));
+       else  if (( _m.lang.isNotEmpty( obj.cmd )) && ( obj.cmd === _STRINGS.HELP )) {
+             const subobj = _m.util.split( obj.args );
+             const submod = _REGISTRY[ subobj.cmd ];
+             if ( ! _m.lang.exists( subobj.cmd )) {
+                  return Promise.resolve( log( help( _STRINGS.EMPTY )));
+             }
+             else if ( ! _m.lang.exists( submod )) {
+                  const msg = `${ _STRINGS.MSG_UNKNOWN_CMD }: '${ subobj.cmd }'`;
+                  return Promise.reject( log( help( `${ msg }\n\r\n\r` )));
+             }
+             else return _m.util.help( submod, [ _STRINGS.HELP, ...subobj.args ], log );
+       }
+       else  return Promise.resolve( log( help( _STRINGS.EMPTY )));
   }
-  try {
-    /* istanbul ignore if */
-    if ( _m.lang.isString( module )) {
-         module = _m.dynamic.require( module );
-    }
-    return _m.util.invoke( module, obj.args, log );
-  }
-  catch( error ) /* istanbul ignore next */ { return Promise.reject( error ); }
+  else return _m.util.invoke( registry, obj.args, log );
 }
-
-/**
- *  Invoke command 'help'
- *  Note: Removed from its own module to resolve circular
- *        dependency: registry <=> help
- *
- *  @param  {object}    args  - Commandline arguments
- *  @param  {Function}  log   - Logging function
- */
-function invokeHelp( args, log ) {
-  log = _m.lang.exists( log  ) ? log : console.log;
-  log( help( _STRINGS.EMPTY, log ));
-}
-
-// Registry commands:
-register( _m.fs  );
-register( _m.git );
-register( _m.npm );
-register({ id:    "help",
-           cmd:   { help: invokeHelp },
-           help:  { help: undefined }
-         });
 
 // Module exports:
 Object.defineProperty( module.exports, _STRINGS.HELP,     {
@@ -141,9 +123,6 @@ Object.defineProperty( module.exports, _STRINGS.HELP,     {
   writable: false, enumerable: true, configurable: false });
 Object.defineProperty( module.exports, _STRINGS.INVOKE,   {
   value:    invoke,
-  writable: false, enumerable: true, configurable: false });
-Object.defineProperty( module.exports, _STRINGS.INVOKEHELP, {
-  value:    invokeHelp,
   writable: false, enumerable: true, configurable: false });
 Object.defineProperty( module.exports, _STRINGS.REGISTER, {
   value:    register,

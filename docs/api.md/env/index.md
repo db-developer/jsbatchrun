@@ -9,6 +9,7 @@
     * _static_
         * [._(args, log)](#module_jsbatchrun/env._)
     * _inner_
+        * [~register()](#module_jsbatchrun/env..register)
         * [~get()](#module_jsbatchrun/env..get)
 
 
@@ -24,6 +25,14 @@
 | log | <code>function</code> | Function to do logging. Defaults to console.log |
 
 
+<br><a name="module_jsbatchrun/env..register"></a>
+
+### jsbatchrun/env~register()
+> Register command plugins.
+
+
 <br><a name="module_jsbatchrun/env..get"></a>
 
 ### jsbatchrun/env~get()
+> Returns an environment.
+

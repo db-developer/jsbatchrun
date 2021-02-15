@@ -6,21 +6,20 @@
 
 
 * [jsbatchrun/registry/registry](#module_jsbatchrun/registry/registry)
-    * [~register(mod)](#module_jsbatchrun/registry/registry..register)
+    * [~register(exports)](#module_jsbatchrun/registry/registry..register)
     * [~help()](#module_jsbatchrun/registry/registry..help)
     * [~invoke(args, [log])](#module_jsbatchrun/registry/registry..invoke)
-    * [~invokeHelp(args, log)](#module_jsbatchrun/registry/registry..invokeHelp)
 
 
 <br><a name="module_jsbatchrun/registry/registry..register"></a>
 
-### jsbatchrun/registry/registry~register(mod)
+### jsbatchrun/registry/registry~register(exports)
 > Register a command with a module for executing the command.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| mod | <code>module</code> | The module (exports) to call for                          executing a command. |
+| exports | <code>object</code> | A modules exports, which must provide all                              properties to make up a registry.                              See: <code>'jsbatch-lang'.isRegistry</code> |
 
 
 <br><a name="module_jsbatchrun/registry/registry..help"></a>
@@ -39,16 +38,4 @@
 | --- | --- | --- |
 | args | <code>Array</code> | Commandline arguments |
 | [log] | <code>function</code> | A logging function (for testing purposes) |
-
-
-<br><a name="module_jsbatchrun/registry/registry..invokeHelp"></a>
-
-### jsbatchrun/registry/registry~invokeHelp(args, log)
-> Invoke command 'help'>  Note: Removed from its own module to resolve circular>        dependency: registry <=> help
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| args | <code>object</code> | Commandline arguments |
-| log | <code>function</code> | Logging function |
 

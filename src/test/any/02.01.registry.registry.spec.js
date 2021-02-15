@@ -5,6 +5,7 @@
 "use strict";
 const expect  = require( "expect.js" );
 const path    = require( "path" );
+const lang    = require( "jsbatch-lang" );
 
 describe( "02.01.registry.registry.spec.js - Testing module 'lib/registry/registry.js'", () => {
   const registry = require( "../../lib/registry/registry" );
@@ -48,23 +49,21 @@ describe( "02.01.registry.registry.spec.js - Testing module 'lib/registry/regist
     });
     it( "should be callable without parameters", () => {
         const args = [ "npm", "--first", "--second" ];
-        expect(() => { registry.invoke( args, () => { }) }).not.to.throwException(( error ) => { console.log( error )});
+        expect(() => { registry.invoke( args, () => { }) }).not.to.throwException();
     });
     it( "should be callable with parameter 'args' {[ 'help' ]}", () => {
         const args = [ "help" ];
-        expect(() => { registry.invoke( args, () => { }) }).not.to.throwException(( error ) => { console.log( error )});
+        expect(() => { registry.invoke( args, () => { }) }).not.to.throwException();
     });
     it( "should be callable with parameter 'args' {[ 'help', 'npm' ]}", () => {
-        const args = [ "help", "npm" ];
-        expect(() => { registry.invoke( args, () => { }) }).not.to.throwException(( error ) => { console.log( error )});
+        const args  = [ "help", "xxx" ];
+        expect(() => { registry.invoke( args, () => { }) }).not.to.throwException();
     });
-  });
-  describe( "Testing function 'invokeHelp' of module 'registry'", () => {
-    it( "should be callable without parameters", () => {
-        expect(() => { registry.invokeHelp() }).not.to.throwException();
-    });
-    it( "should be callable with parameter 'log' {Function}", () => {
-        expect(() => { registry.invokeHelp( undefined, console.log ) }).not.to.throwException();
+    it( "should be callable with parameter 'args' {[ 'help', 'npm' ]}", () => {
+        const args  = [ "help", "fun" ];
+        const reg   = lang.registry( "fun" );
+        expect(() => { registry.register( reg );
+                       registry.invoke( args, () => { }) }).not.to.throwException();
     });
   });
   describe( "Testing function 'register' of module 'registry'", () => {
@@ -72,6 +71,19 @@ describe( "02.01.registry.registry.spec.js - Testing module 'lib/registry/regist
         const errmsg  = "Environment::register( cmdname, module ) - Parameter 'module' (exports) must be of type 'object' {registry}.";
         expect(() => { registry.register( ) }).to.throwException(( error ) => {
           // console.log( error );
+          expect( error ).to.be.a( TypeError );
+          expect( error.message === errmsg ).to.be.ok();
+        });
+    });
+    it( "should be callable with parameter 'exports' {registry}", () => {
+        const reg = lang.registry( "blubb" );
+        expect(() => { registry.register( reg ) }).not.to.throwException();
+    });
+    it( "should not accept the same registry id twice", () => {
+        const reg     = lang.registry( "blubb" );
+        const errmsg  = "Cannot redefine property: blubb";
+        expect(() => { registry.register( reg ) }).to.throwException(( error ) => {
+          // console.log( error )
           expect( error ).to.be.a( TypeError );
           expect( error.message === errmsg ).to.be.ok();
         });
