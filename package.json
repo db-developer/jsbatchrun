@@ -52,7 +52,7 @@
     "grunt-webpack": "^4.0.2",
     "jsbatchrun-fs": "^0.0.1",
     "jsbatchrun-git": "^0.0.1",
-    "jsbatchrun-npm": "^0.0.5",
+    "jsbatchrun-npm": "^0.0.7",
     "load-grunt-config": "^3.0.1",
     "load-grunt-tasks": "^5.1.0",
     "rollup-plugin-terser": "^7.0.2",
