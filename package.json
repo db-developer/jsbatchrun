@@ -49,7 +49,7 @@
     "grunt-nyc-mocha": "^0.0.10",
     "grunt-rollup": "^11.5.0",
     "grunt-shell": "^3.0.1",
-    "grunt-webpack": "^4.0.2",
+    "grunt-webpack": "^4.0.3",
     "jsbatchrun-fs": "^0.0.1",
     "jsbatchrun-git": "^0.0.1",
     "jsbatchrun-npm": "^0.0.7",
