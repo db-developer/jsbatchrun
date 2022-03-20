@@ -4,8 +4,9 @@
   "description": "batchbuild javascript projects",
   "author": "Dirk Brenckmann <db.developer@gmx.de>",
   "license": "MIT",
+  "engineStrict": true,
   "engines": {
-    "node": ">=10.15.1"
+    "node": ">=14"
   },
   "main": "src/bin/jsbatchrun",
   "scripts": {
@@ -50,7 +51,7 @@
     "grunt-move": "^1.0.3",
     "grunt-nyc-mocha": "^1.1.0",
     "grunt-rollup": "^11.9.0",
-    "grunt-shell": "^3.0.1",
+    "grunt-shell": "^4.0.0",
     "grunt-webpack": "^5.0.0",
     "jsbatchrun-fs": "^0.0.1",
     "jsbatchrun-git": "^0.0.1",
