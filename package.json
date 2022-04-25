@@ -63,8 +63,8 @@
   },
   "dependencies": {
     "grunt": "^1.5.1",
-    "jsbatch-lang": "^0.0.3",
-    "jsbatch-strings": "^0.0.3",
+    "jsbatch-lang": "^0.0.2",
+    "jsbatch-strings": "^0.0.2",
     "minimist": "^1.2.6",
     "resolve": "^1.22.0"
   }
