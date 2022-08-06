@@ -8,7 +8,7 @@ batchrun javascript commands
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](https://gruntjs.com/)
 [![codecov](https://codecov.io/gh/db-developer/jsbatchrun/branch/master/graph/badge.svg)](https://codecov.io/gh/db-developer/jsbatchrun)
 [![Build Status](https://travis-ci.com/db-developer/jsbatchrun.svg?branch=master)](https://travis-ci.com/db-developer/jsbatchrun)
-[![dependencies](https://david-dm.org/db-developer/jsbatchrun.svg)](https://david-dm.org/)
+[![dependencies](https://img.shields.io/librariesio/release/npm/jsbatchrun)](https://libraries.io/)
 
 While [grunt.js](https://gruntjs.com/) is a great tool for managing vertical tasks within a project,
 its capabilities to do the same jobs automated and repeatedly for more than one project are limited.  
