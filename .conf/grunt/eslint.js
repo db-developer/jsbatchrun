@@ -6,13 +6,13 @@
 
  module.exports = function ( grunt, options ) {
  
-   return {
-     options: {
-       overrideConfigFile: ".eslintrc.js"
-     },
-     target: [
-       GRUNTFILE,
-       `${ options.LIBDIR }/**/*.js`
-     ]
-   }
- };
+  return {
+    options: {
+    overrideConfigFile: ".conf/eslint/eslint.config.js"
+    },
+    target: [
+      GRUNTFILE,
+      `${ options.LIBDIR }/**/*.js`
+    ]
+  }
+};
